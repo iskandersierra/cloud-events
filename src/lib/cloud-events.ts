@@ -59,5 +59,10 @@ export const explainCloudEvent = (event: CloudEvent) => {
 };
 
 export const validateCloudEvent = (event: CloudEvent) => {
-  return joi.validate(event, cloudEventSchema);
+  return new Promise<CloudEvent>((resolve, reject) => {
+    joi
+      .validate(event, cloudEventSchema)
+      .then(resolve)
+      .catch(reject);
+  });
 };

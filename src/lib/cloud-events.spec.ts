@@ -1,14 +1,19 @@
 // tslint:disable:no-expression-statement
 import { test } from 'ava';
 import except from 'except';
-import { CloudEvent, isCloudEvent } from './cloud-events';
+import {
+  CloudEvent,
+  explainCloudEvent,
+  isCloudEvent,
+  validateCloudEvent
+} from './cloud-events';
 
 const sample: CloudEvent = {
   cloudEventsVersion: '0.1',
   contentType: 'text/xml',
   data: '<much wow="xml"/>',
   eventID: 'A234-1234-1234',
-  eventTime: '2018-04-05T17:31:00Z',
+  eventTime: '2018-04-05T17:31:00.000Z',
   eventType: 'com.example.someevent',
   eventTypeVersion: '1.0',
   extensions: {
@@ -132,6 +137,34 @@ for (const group of constraintsDatasets) {
         t.true(isCloudEvent(aCase[1]));
       } else {
         t.false(isCloudEvent(aCase[1]));
+      }
+    });
+  }
+}
+
+for (const group of constraintsDatasets) {
+  for (const aCase of group.cases) {
+    test(`explainCloudEvent - ${group.field} - ${aCase[0]}`, t => {
+      if (aCase[2]) {
+        t.is(explainCloudEvent(aCase[1]), false);
+      } else {
+        t.is(typeof explainCloudEvent(aCase[1]), 'string');
+      }
+    });
+  }
+}
+
+for (const group of constraintsDatasets) {
+  for (const aCase of group.cases) {
+    test(`validateCloudEvent - ${group.field} - ${aCase[0]}`, t => {
+      if (aCase[2]) {
+        return validateCloudEvent(aCase[1])
+          .then(e => t.deepEqual(e, aCase[1]))
+          .catch(() => t.fail('Should not fail'));
+      } else {
+        return validateCloudEvent(aCase[1])
+          .then(() => t.fail('Should not succeed'))
+          .catch(() => t.pass());
       }
     });
   }
