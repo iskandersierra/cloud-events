@@ -1,0 +1,30 @@
+{
+  "name": "cloud-events",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iskandersierra/cloud-events.git"
+  },
+  "keywords": [
+    "cloudevents"
+  ],
+  "author": "Iskander Sierra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iskandersierra/cloud-events/issues"
+  },
+  "homepage": "https://github.com/iskandersierra/cloud-events#readme",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "mocha": "^5.2.0",
+    "should": "^13.2.1"
+  },
+  "dependencies": {
+    "joi": "^13.4.0"
+  }
+}
