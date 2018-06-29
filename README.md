@@ -1,11 +1,10 @@
 # @isksz/cloud-events
 
-  [![NPM Version][npm-image]][npm-url]
+  [![Node version](https://img.shields.io/npm/v/@isksz/cloud-events.svg)](https://www.npmjs.com/package/@isksz/cloud-events)
+  [![NPM Downloads](https://img.shields.io/npm/dt/@isksz/cloud-events.svg)](https://www.npmjs.com/package/@isksz/cloud-events)
   [![Build Status](https://travis-ci.org/iskandersierra/cloud-events.png?branch=master)](https://travis-ci.org/iskandersierra/cloud-events)
-  [![NPM Downloads][downloads-image]][downloads-url]
-  [![Node.js Version][node-version-image]][node-version-url]
-  [![Build Status][travis-image]][travis-url]
-  [![Test Coverage][coveralls-image]][coveralls-url]
+  [![Node.js Version](https://img.shields.io/node/v/@isksz/cloud-events.svg)]()
+  [![Test Coverage](https://img.shields.io/coveralls/github/iskandersierra/cloud-events.svg)](https://coveralls.io/github/iskandersierra/cloud-events)
 
 Cloud Events
 

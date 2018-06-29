@@ -51,6 +51,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
+    "@types/lazy.js": "^0.3.29",
     "joi": "^13.4.0"
   },
   "devDependencies": {

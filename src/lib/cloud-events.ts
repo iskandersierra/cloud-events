@@ -1,6 +1,7 @@
 import * as joi from 'joi';
 
-export interface CloudEvent {
+// tslint:disable-next-line:interface-over-type-literal
+export type CloudEvent  = {
   readonly eventType: string;
   readonly eventTypeVersion?: string;
   readonly cloudEventsVersion: string;
@@ -11,6 +12,7 @@ export interface CloudEvent {
   readonly contentType?: string;
   readonly extensions?: { readonly [key: string]: string };
   readonly data?: any;
+  readonly [key: string]: any;
 }
 
 /* https://github.com/cloudevents/spec/blob/master/spec.md#type-system */
@@ -47,18 +49,18 @@ export const cloudEventSchema = joi
     schemaURL: ceSchemaURL,
     source: ceSource
   })
-  .unknown(false);
+  .unknown(true);
 
-export const isCloudEvent = (event: CloudEvent) => {
+export const isCloudEvent = (event: any) => {
   return !joi.validate(event, cloudEventSchema).error;
 };
 
-export const explainCloudEvent = (event: CloudEvent) => {
+export const explainCloudEvent = (event: any) => {
   const error = joi.validate(event, cloudEventSchema).error;
   return error ? error.annotate() : false;
 };
 
-export const validateCloudEvent = (event: CloudEvent) => {
+export const validateCloudEvent = (event: any) => {
   return new Promise<CloudEvent>((resolve, reject) => {
     joi
       .validate(event, cloudEventSchema)
