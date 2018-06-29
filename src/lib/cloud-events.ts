@@ -1,7 +1,7 @@
 import * as joi from 'joi';
 
 // tslint:disable-next-line:interface-over-type-literal
-export type CloudEvent  = {
+export type CloudEvent = {
   readonly eventType: string;
   readonly eventTypeVersion?: string;
   readonly cloudEventsVersion: string;
@@ -13,7 +13,7 @@ export type CloudEvent  = {
   readonly extensions?: { readonly [key: string]: string };
   readonly data?: any;
   readonly [key: string]: any;
-}
+};
 
 /* https://github.com/cloudevents/spec/blob/master/spec.md#type-system */
 const ceString = joi.string();
